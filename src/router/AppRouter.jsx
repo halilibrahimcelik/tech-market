@@ -1,11 +1,11 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import React from "react";
-import Explore from "../pages/Explore";
-import Offers from "../pages/Offers";
-import Profile from "../pages/Profile";
-import SignIn from "../pages/SignIn";
-import SignUp from "../pages/SignUp";
-import ForgotPassword from "../pages/ForgotPassword";
+import Explore from "../pages/home/Explore";
+import Offers from "../pages/offers/Offers";
+import Profile from "../pages/profile/Profile";
+import SignIn from "../pages/logIn/SignIn";
+import SignUp from "../pages/register/SignUp";
+import ForgotPassword from "../pages/forgotPassword/ForgotPassword";
 import Navbar from "../components/navBar/Navbar";
 
 const AppRouter = () => {

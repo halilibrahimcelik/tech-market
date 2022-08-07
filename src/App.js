@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import Container from "./components/UI/Container";
 import AppRouter from "./router/AppRouter";
 
 function App() {
@@ -8,9 +9,9 @@ function App() {
       .then(console.log);
   }, []);
   return (
-    <div className="App">
+    <Container>
       <AppRouter />
-    </div>
+    </Container>
   );
 }
 

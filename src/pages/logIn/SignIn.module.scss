@@ -1,0 +1,26 @@
+.signIn-module{
+ 
+   
+
+    form{
+        display: flex;
+        flex-direction: column;
+       gap:1rem;
+
+    
+       label{
+        background-color: #fff;
+        border-radius: 9px;
+        padding:0.5rem;
+       
+       }
+        input{
+            border: none;
+            padding:0.7rem;
+            width: 90%;
+            background-color: transparent;
+
+       outline: none;
+        }
+    }
+}
