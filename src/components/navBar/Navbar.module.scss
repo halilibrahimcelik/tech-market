@@ -1,0 +1,36 @@
+.navBar{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 85px;
+    background-color: white;
+    color:#807d7d;
+
+
+    ul{
+        display: flex;
+        list-style-type: none;
+        justify-content: space-evenly;
+    
+        text-align: center;
+        
+   
+       p{
+   
+        margin: 0;
+       }
+    }
+
+}
+.icon{
+
+  font-size: 2rem;
+  cursor: pointer;
+
+
+}
+.active{
+    color:black;
+    font-weight: 800;
+}
