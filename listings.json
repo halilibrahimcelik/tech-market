@@ -1,0 +1,122 @@
+{
+	"listings": [
+		{
+			"name": "Lenovo Ideapad 3",
+			"type": "laptop",
+			"userRef": "ID OF A USER",
+			"brand":"Lenovo",
+			"operatingSystem": "Windows 11 Pro",
+			"screenSize": 15.6,
+            "graphicModule":"NVIDIA GeForce RTX",
+			"ramMemory": 16,
+			"offer": true,
+			"regularPrice": 2500,
+			"discountedPrice": 2000,
+			"location": "8601 West Peachtree St Stratford, CT 06614",
+			"geolocation": {
+				"lat": "41.205590",
+				"lng": "-73.150530"
+			},
+			"imageUrls": [],
+			"timestamp": "00:00:00"
+		},
+		{
+			"name": "MacBook Pro 2021",
+			"type": "laptop",
+			"userRef": "ID OF A USER",
+			"brand":"Apple",
+			"operatingSystem": "MAC OS",
+			"screenSize": 16,
+            "graphicModule":"Apple M2",
+			"ramMemory": 32,
+			"offer": false,
+			"regularPrice": 65000,
+			"location": "517 High Ridge St Flowery Branch, GA 30542",
+			"geolocation": {
+				"lat": "34.1851",
+				"lng": "-83.9252"
+			},
+			"imageUrls": [],
+			"timestamp": "00:00:00"
+		},
+		{
+			"name": "SAMSUNG Galaxy S21 FE 5G Cell Phone",
+			"type": "phone",
+            "userRef": "ID OF A USER",
+			"brand":"Samsung",
+			"operatingSystem": "Android",
+			"screenSize": 	6.4 ,
+            "graphicModule":"32 MP",
+			"ramMemory": 128,
+			"offer": true,
+			"regularPrice": 700,
+			"discountedPrice": 690,
+			"location": "9814B Cedar Swamp Street Cincinnati, OH 45211",
+			"geolocation": {
+				"lat": "39.144320",
+				"lng": "-84.569630"
+			},
+			"imageUrls": [],
+			"timestamp": "00:00:00"
+		},
+		{
+            "name": "Apple iPhone 13 Pro Max",
+			"type": "phone",
+            "userRef": "ID OF A USER",
+			"brand":"Apple",
+			"operatingSystem": "IOS",
+			"screenSize": 	6.7 ,
+            "graphicModule":"32 MP",
+			"ramMemory": 128,
+			"offer": true,
+			"regularPrice": 7200,
+			"discountedPrice": 6700,
+			"location": "7644 Carswold Dr Clayton, MO, 63105",
+			"geolocation": {
+				"lat": "35.628690",
+				"lng": "-78.455520"
+			},
+			"imageUrls": [],
+			"timestamp": "00:00:00"
+		},
+		{
+			"name": "Xiaomi Redmi Note 10 Pro",
+			"type": "phone",
+            "userRef": "ID OF A USER",
+			"brand":"Apple",
+			"operatingSystem": "Android",
+			"screenSize": 	6.6 ,
+            "graphicModule":"108 MP",
+			"ramMemory": 128,
+			"offer": false,
+			"regularPrice": 6300,
+			"location": "810 North Lyme Drive Milton, MA 02186",
+			"geolocation": {
+				"lat": "42.247270",
+				"lng": "-71.053470"
+			},
+			"imageUrls": [],
+			"timestamp": "00:00:00"
+		},
+		{
+			"name": "Xiaomi Redmi 10",
+			"type": "phone",
+            "userRef": "ID OF A USER",
+			"brand":"Apple",
+			"operatingSystem": "Android",
+			"screenSize": 	6.5 ,
+            "graphicModule":"108 MP",
+			"ramMemory": 128,
+			"offer": true,
+			"regularPrice": 2300,
+			"discountedPrice": 1900,
+			"location": "11 Buttonwood Street Fort Lauderdale, FL 33308",
+			"geolocation": {
+				"lat": "26.209080",
+				"lng": "-80.112100"
+			},
+			"imageUrls": [],
+			"timestamp": "00:00:00"
+		}
+	]
+}
