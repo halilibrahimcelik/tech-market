@@ -1,27 +1,45 @@
 import React from "react";
 import styles from "./SignIn.module.scss";
 import { BsFillArrowRightSquareFill } from "react-icons/bs";
-import { FaIdCardAlt } from "react-icons/fa";
+
 import { RiLockPasswordFill } from "react-icons/ri";
 import { GrMail } from "react-icons/gr";
 import visibilityIcon from "../../assets/eye-solid.svg";
 import inVisibilityIcon from "../../assets/eye-slash-solid.svg";
 import { useState } from "react";
 import { useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { toast } from "react-toastify";
+
 const SignIn = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const nameInput = useRef();
+
   const mailInput = useRef();
   const passwordInput = useRef();
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const enteredMail = mailInput.current.value;
-    const enteredPassword = passwordInput.current.value;
+    try {
+      const enteredMail = mailInput.current.value;
+      const enteredPassword = passwordInput.current.value;
+      const auth = getAuth();
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        enteredMail,
+        enteredPassword
+      );
+      if (userCredential.user) {
+        navigate("/", { replace: true });
+      }
+    } catch (error) {
+      console.log(error);
+      console.log(error.message);
+      toast.error("Bad User Credentials 😔");
+    }
 
-    console.log(enteredMail, enteredPassword);
     e.target.reset();
   };
   return (

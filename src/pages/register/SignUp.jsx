@@ -9,6 +9,7 @@ import inVisibilityIcon from "../../assets/eye-slash-solid.svg";
 import { useState } from "react";
 import { useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 import {
   getAuth,
@@ -53,6 +54,7 @@ const SignUp = () => {
     } catch (error) {
       console.log(error);
       console.log(error.message);
+      toast.error("Something went wrong with Registration");
     }
     e.target.reset();
   };
