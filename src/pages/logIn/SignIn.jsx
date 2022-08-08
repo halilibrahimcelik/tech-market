@@ -7,25 +7,75 @@ import { GrMail } from "react-icons/gr";
 import visibilityIcon from "../../assets/eye-solid.svg";
 import inVisibilityIcon from "../../assets/eye-slash-solid.svg";
 import { useState } from "react";
+import { useRef } from "react";
+import { Link } from "react-router-dom";
 const SignIn = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const nameInput = useRef();
+  const mailInput = useRef();
+  const passwordInput = useRef();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const enteredMail = mailInput.current.value;
+    const enteredPassword = passwordInput.current.value;
+
+    console.log(enteredMail, enteredPassword);
+    e.target.reset();
+  };
   return (
     <section className={styles["signIn-module"]}>
       <h2>Welcome Back!</h2>
-      <form>
-        <label htmlFor="nameInput">
-          <FaIdCardAlt />
-          <input type="text" id="nameInput" />
-        </label>
+      <form onSubmit={handleSubmit}>
         <label htmlFor="emailInput">
-          <GrMail />
-          <input type="email" id="emailInput" />
+          <GrMail className={styles.icon} />
+          <input
+            type="email"
+            id="emailInput"
+            placeholder="Email"
+            ref={mailInput}
+          />
         </label>
         <label htmlFor="passwordInput">
-          <RiLockPasswordFill />
-          <input type="password" id="passwordInput" />
+          <RiLockPasswordFill className={styles.icon} />
+          <input
+            type={showPassword ? "text" : "password"}
+            id="passwordInput"
+            placeholder="Password"
+            ref={passwordInput}
+          />
+          {showPassword ? (
+            <img
+              className={styles.image}
+              src={inVisibilityIcon}
+              alt="visibleIcon"
+              onClick={() => setShowPassword(!showPassword)}
+            />
+          ) : (
+            <img
+              className={styles.image}
+              src={visibilityIcon}
+              alt="invisibilityIcon"
+              onClick={() => setShowPassword(!showPassword)}
+            />
+          )}
         </label>
+        <Link className={styles["forgot-password"]} to="/forgot-password">
+          Forgot Password{" "}
+        </Link>
+        <div className={styles["signIn-button"]}>
+          <p>Sign In</p>
+          <button type="submit">
+            <BsFillArrowRightSquareFill />
+          </button>
+        </div>
       </form>
+
+      {/*Google Auth*/}
+      <Link to="/sign-up" className={styles["sign-up"]}>
+        Sign Up Instead{" "}
+      </Link>
     </section>
   );
 };
