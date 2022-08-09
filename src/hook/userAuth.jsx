@@ -1,9 +1,12 @@
 import { useContext, createContext, useEffect } from "react";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getAuth, onAuthStateChanged, updateProfile } from "firebase/auth";
 import { useState } from "react";
+import { updateDoc } from "firebase/firestore";
+import { db } from "../helpers/firebase.config";
 
 export const AuthContext = createContext({
-  userInfo: "",
+  auth: "",
+  // logOut: () => {},
 });
 
 //?our custom hook
@@ -12,18 +15,19 @@ export const useAuthContext = () => {
 };
 
 const AuthContextProvider = (props) => {
-  const [user, setUser] = useState(null);
+  const [authInfo, setAuthInfo] = useState(null);
   const auth = getAuth();
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        setUser(auth);
+        setAuthInfo(auth);
       }
     });
   }, [auth]);
   const contextValue = {
-    userInfo: user,
+    auth: authInfo,
+    // logOut: signOut(),
   };
 
   return (

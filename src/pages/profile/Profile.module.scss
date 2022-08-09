@@ -96,3 +96,11 @@ button{
         width: 100%;
     }
 }
+@media (min-width:900px){
+    .profile{
+        header{
+            width: 50rem;
+            margin:1rem auto
+        }
+    }
+}

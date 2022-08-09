@@ -7,6 +7,7 @@ import SignIn from "../pages/logIn/SignIn";
 import SignUp from "../pages/register/SignUp";
 import ForgotPassword from "../pages/forgotPassword/ForgotPassword";
 import Navbar from "../components/navBar/Navbar";
+import ProtectedRotue from "./ProtectedRotue";
 
 const AppRouter = () => {
   return (
@@ -15,7 +16,9 @@ const AppRouter = () => {
         <Route path="/" element={<Explore />} />
         <Route path="/offers" element={<Offers />} />
         <Route path="/sign-in" element={<SignIn />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/profile" element={<ProtectedRotue />}>
+          <Route path="" element={<Profile />} />
+        </Route>
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
       </Routes>
