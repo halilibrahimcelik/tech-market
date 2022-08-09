@@ -3,7 +3,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useState } from "react";
 
 export const AuthContext = createContext({
-  userName: "",
+  userInfo: "",
 });
 
 //?our custom hook
@@ -23,7 +23,7 @@ const AuthContextProvider = (props) => {
     });
   }, [auth]);
   const contextValue = {
-    userName: user,
+    userInfo: user,
   };
 
   return (
