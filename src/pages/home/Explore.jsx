@@ -3,8 +3,8 @@ import { useAuthContext } from "../../hook/userAuth";
 import { toast } from "react-toastify";
 import CustomToastify from "../../components/toastify/CustomToastify";
 const Explore = () => {
-  const { auth } = useAuthContext();
-  console.log(auth);
+  const { auth, token } = useAuthContext();
+  console.log(token);
 
   if (auth?.currentUser) {
     toast(<CustomToastify />);

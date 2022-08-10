@@ -5,7 +5,9 @@ import { updateDoc } from "firebase/firestore";
 import { db } from "../helpers/firebase.config";
 
 export const AuthContext = createContext({
+  token: "",
   auth: "",
+  setToken: () => {},
   // logOut: () => {},
 });
 
@@ -16,6 +18,7 @@ export const useAuthContext = () => {
 
 const AuthContextProvider = (props) => {
   const [authInfo, setAuthInfo] = useState(null);
+  const [token, setToken] = useState(false);
   const auth = getAuth();
 
   useEffect(() => {
@@ -27,6 +30,8 @@ const AuthContextProvider = (props) => {
   }, [auth]);
   const contextValue = {
     auth: authInfo,
+    token: token,
+    setToken: setToken,
     // logOut: signOut(),
   };
 

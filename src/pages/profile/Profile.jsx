@@ -4,10 +4,32 @@ import styles from "./Profile.module.scss";
 import { TbShoppingCartPlus } from "react-icons/tb";
 import { GiZigArrow } from "react-icons/gi";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useRef } from "react";
+import { updateProfile } from "firebase/auth";
 
 const Profile = () => {
   const { auth } = useAuthContext();
+  console.log(auth);
   const navigate = useNavigate();
+  const enteredName = useRef(auth?.currentUser?.displayName);
+  console.log(enteredName);
+  const [changeDetails, setChangeDetails] = useState(false);
+  const [name, setName] = useState(auth?.currentUser?.displayName);
+  const [email, setEmail] = useState(auth?.currentUser?.email);
+  console.log(name);
+
+  const handleSubmit = async () => {
+    try {
+    } catch (error) {
+      if (auth?.currentUser?.displayName !== name) {
+        //Update displayName in firebase this returns a promise
+        await updateProfile(auth.currentUser, {
+          displayName: name,
+        });
+      }
+    }
+  };
 
   const handleLogout = () => {
     auth.signOut();
@@ -23,11 +45,32 @@ const Profile = () => {
       <article className={styles["user-details"]}>
         <div className={styles.title}>
           <p>Personal Details</p>
-          <button>change</button>
+          <button
+            onClick={() => {
+              changeDetails && handleSubmit();
+              setChangeDetails(!changeDetails);
+            }}
+          >
+            {changeDetails ? "done!" : "change"}
+          </button>
         </div>
         <div className={styles["user-info"]}>
-          <p>{auth?.currentUser?.displayName} </p>
-          <p>{auth?.currentUser?.email} </p>
+          <form>
+            <input
+              type="text"
+              id="name"
+              disabled={!changeDetails}
+              value={!changeDetails ? auth?.currentUser?.displayName : name}
+              onChange={(e) => setName(e.target.value)}
+            />
+            <input
+              type="text"
+              id="name"
+              disabled={!changeDetails}
+              value={!changeDetails ? auth?.currentUser?.email : email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </form>
         </div>
 
         <div className={styles["user-sale"]}>

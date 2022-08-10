@@ -67,6 +67,14 @@ button{
     font-weight: 800;
     box-shadow: 1px 0px 9px 1px rgba(0,0,0,0.5);
     margin:2rem 0;
+    form{
+        display: flex;
+        flex-direction: column;
+        gap:10px;
+        input{
+            display: block;
+        }
+    }
 }.user-sale{
     display: flex;
     cursor: pointer;
