@@ -7,6 +7,9 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useRef } from "react";
 import { updateProfile } from "firebase/auth";
+import { toast } from "react-toastify";
+import { doc, updateDoc } from "firebase/firestore";
+import { db } from "../../helpers/firebase.config";
 
 const Profile = () => {
   const { auth } = useAuthContext();
@@ -21,13 +24,19 @@ const Profile = () => {
 
   const handleSubmit = async () => {
     try {
-    } catch (error) {
       if (auth?.currentUser?.displayName !== name) {
         //Update displayName in firebase this returns a promise
         await updateProfile(auth.currentUser, {
           displayName: name,
         });
+
+        //update in Firestore
+        const userRef = doc(db, "users", auth?.currentUser.uuid);
+        await updateDoc(userRef, { name });
+        toast.success("Your user creditentials succesfully updated!");
       }
+    } catch (error) {
+      toast.error(error);
     }
   };
 

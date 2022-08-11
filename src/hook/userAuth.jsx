@@ -3,6 +3,7 @@ import { getAuth, onAuthStateChanged, updateProfile } from "firebase/auth";
 import { useState } from "react";
 import { updateDoc } from "firebase/firestore";
 import { db } from "../helpers/firebase.config";
+import { unstable_batchedUpdates } from "react-dom";
 
 export const AuthContext = createContext({
   token: "",
@@ -17,17 +18,23 @@ export const useAuthContext = () => {
 };
 
 const AuthContextProvider = (props) => {
-  const [authInfo, setAuthInfo] = useState(null);
-  const [token, setToken] = useState(false);
   const auth = getAuth();
+  const [authInfo, setAuthInfo] = useState(null);
+  const [token, setToken] = useState(auth.lastNotifiedUid);
 
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
+    const unsub = onAuthStateChanged(auth, (user) => {
+      unstable_batchedUpdates(() => {
         setAuthInfo(auth);
-      }
+      });
+      console.log("auth state changed!");
+      console.log(auth);
+      return () => {
+        unsub();
+      };
     });
   }, [auth]);
+
   const contextValue = {
     auth: authInfo,
     token: token,

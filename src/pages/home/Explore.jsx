@@ -6,7 +6,7 @@ const Explore = () => {
   const { auth, token } = useAuthContext();
   console.log(token);
 
-  if (auth?.currentUser) {
+  if (auth?.displayName) {
     toast(<CustomToastify />);
   }
   return (

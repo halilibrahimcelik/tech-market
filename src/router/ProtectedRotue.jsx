@@ -4,13 +4,10 @@ import { useAuthContext } from "../hook/userAuth";
 
 const ProtectedRotue = () => {
   const { auth, token } = useAuthContext();
-  console.log(auth);
+  const user = localStorage.getItem("token");
+  console.log(user);
 
-  return auth?.currentUser?.displayName || token ? (
-    <Outlet />
-  ) : (
-    <Navigate to="/sign-in" />
-  );
+  return auth?.currentUser || token ? <Outlet /> : <Navigate to="/sign-in" />;
 };
 
 export default ProtectedRotue;
