@@ -4,9 +4,9 @@ import { toast } from "react-toastify";
 import CustomToastify from "../../components/toastify/CustomToastify";
 const Explore = () => {
   const { auth, token } = useAuthContext();
-  console.log(token);
+  console.log(auth);
 
-  if (auth?.displayName) {
+  if (auth?.currentUser) {
     toast(<CustomToastify />);
   }
   return (

@@ -71,8 +71,20 @@ button{
         display: flex;
         flex-direction: column;
         gap:10px;
+        label{
+            display: flex;
+            align-items: center;
+            
+        }
         input{
+            width: 100%;
             display: block;
+            color:rgb(49, 44, 44);
+            background-color: transparent;
+            border: none;
+            padding: 0.4rem 0.2rem;
+            font-size: 1rem;
+            font-weight: 800;
         }
     }
 }.user-sale{
@@ -93,12 +105,12 @@ button{
     gap:1rem
   }
 
-    .icon{
-        font-size: 2rem;
-        color: #00CC66;
-    }
 }
 
+.icon{
+    font-size: 2rem;
+    color: #00CC66;
+}
 @media  (max-width:600px) {
     .user-details{
         width: 100%;

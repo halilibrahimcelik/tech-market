@@ -9,7 +9,6 @@ export const AuthContext = createContext({
   token: "",
   auth: "",
   setToken: () => {},
-  // logOut: () => {},
 });
 
 //?our custom hook
@@ -20,15 +19,23 @@ export const useAuthContext = () => {
 const AuthContextProvider = (props) => {
   const auth = getAuth();
   const [authInfo, setAuthInfo] = useState(null);
-  const [token, setToken] = useState(auth.lastNotifiedUid);
+  const [token, setToken] = useState(null);
 
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, (user) => {
-      unstable_batchedUpdates(() => {
-        setAuthInfo(auth);
-      });
-      console.log("auth state changed!");
-      console.log(auth);
+      if (user) {
+        unstable_batchedUpdates(() => {
+          setAuthInfo(auth);
+        });
+        const userInfo = {
+          name: user.displayName,
+          email: user.email,
+        };
+        console.log("auth state changed!");
+        console.log(auth);
+        localStorage.setItem("token", JSON.stringify(user.uid));
+        localStorage.setItem("userInfo", JSON.stringify(userInfo));
+      }
       return () => {
         unsub();
       };
@@ -39,7 +46,6 @@ const AuthContextProvider = (props) => {
     auth: authInfo,
     token: token,
     setToken: setToken,
-    // logOut: signOut(),
   };
 
   return (

@@ -5,7 +5,9 @@ import { TbShoppingCartPlus } from "react-icons/tb";
 import { GiZigArrow } from "react-icons/gi";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { useRef } from "react";
+import { FaIdCardAlt } from "react-icons/fa";
+
+import { GrMail } from "react-icons/gr";
 import { updateProfile } from "firebase/auth";
 import { toast } from "react-toastify";
 import { doc, updateDoc } from "firebase/firestore";
@@ -13,14 +15,18 @@ import { db } from "../../helpers/firebase.config";
 
 const Profile = () => {
   const { auth } = useAuthContext();
-  console.log(auth);
+
   const navigate = useNavigate();
-  const enteredName = useRef(auth?.currentUser?.displayName);
-  console.log(enteredName);
+  const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+  console.log(userInfo);
+
   const [changeDetails, setChangeDetails] = useState(false);
-  const [name, setName] = useState(auth?.currentUser?.displayName);
-  const [email, setEmail] = useState(auth?.currentUser?.email);
-  console.log(name);
+  const [name, setName] = useState(
+    auth?.currentUser?.displayName || userInfo?.name
+  );
+  const [email, setEmail] = useState(
+    auth?.currentUser?.email || userInfo?.email
+  );
 
   const handleSubmit = async () => {
     try {
@@ -43,6 +49,8 @@ const Profile = () => {
   const handleLogout = () => {
     auth.signOut();
     navigate("/sign-in", { replace: true });
+    localStorage.removeItem("token");
+    localStorage.removeItem("userInfo");
   };
 
   return (
@@ -65,20 +73,26 @@ const Profile = () => {
         </div>
         <div className={styles["user-info"]}>
           <form>
-            <input
-              type="text"
-              id="name"
-              disabled={!changeDetails}
-              value={!changeDetails ? auth?.currentUser?.displayName : name}
-              onChange={(e) => setName(e.target.value)}
-            />
-            <input
-              type="text"
-              id="name"
-              disabled={!changeDetails}
-              value={!changeDetails ? auth?.currentUser?.email : email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
+            <label htmlFor="name">
+              <FaIdCardAlt className={styles.icon} />
+              <input
+                type="text"
+                id="name"
+                disabled={!changeDetails}
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+            </label>
+            <label htmlFor="email">
+              <GrMail className={styles.icon} />
+              <input
+                type="text"
+                id="email"
+                disabled={!changeDetails}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </label>
           </form>
         </div>
 
