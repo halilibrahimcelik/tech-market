@@ -32,7 +32,7 @@ const Explore = () => {
           <div className={styles["category-product"]}>
             <Link to="/category/laptop" className={styles["category-product"]}>
               <img src={laptopImg} alt="Phone catagory" />
-              <p>Phones for Laptop</p>
+              <p>Laptops for Sale</p>
             </Link>
           </div>
         </div>

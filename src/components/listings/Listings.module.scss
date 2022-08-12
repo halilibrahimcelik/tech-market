@@ -1,5 +1,73 @@
+@import "../../sass/variables";
 .product{
+    display: flex;
+    gap: 3rem;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding-bottom: 1rem;
+    border-bottom: 5px solid  #6b6d6b;
+  
     img{
-        width: 200px;
+        width: 300px;
+        border-radius: 20px;
+    }
+    a{
+        opacity: 1;
+        transition: all 0.3s ease-in-out;
+        &:hover{
+            opacity: 0.9;
+        }
     }
 }
+
+.product-detail{
+    display: flex;
+    flex-direction: column;
+   gap:10px;
+    p{
+        margin: 0;
+        padding: 0;
+    }
+}
+
+.location{
+    color:#6b6d6b;
+    display: flex;
+    align-items: center;
+    gap:2rem;
+ 
+}
+.price{
+    display: flex;
+    align-items: center;
+    gap:2rem;
+    color:$primary_color;
+    font-weight: 800;
+    
+}
+.name{
+    display: flex;
+    align-items: center;
+    gap:2rem;
+    font-weight: 800;
+}
+.product-feature{
+    display: flex;
+    gap:2rem;
+    align-items: center;
+ 
+
+
+}
+.icon{
+    font-size: 1.5rem;
+    
+}
+
+.removeIcon {
+    cursor: pointer;
+    position: absolute;
+    top: -3%;
+    right: -2%;
+  }
