@@ -21,7 +21,7 @@ const Explore = () => {
       </header>
       <main>
         {/*Slider*/}
-        <p className={styles["category-header"]}>Catagories</p>
+        <p className={styles["category-header"]}>Categories</p>
         <div className={styles.categories}>
           <div>
             <Link to="/category/phone" className={styles["category-product"]}>

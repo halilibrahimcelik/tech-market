@@ -63,9 +63,11 @@ const Category = () => {
       {loading ? (
         <Spinner />
       ) : listings && listings.length > 0 ? (
-        <ul>
-          <Listings listings={listings} />
-        </ul>
+        <main>
+          <ul>
+            <Listings listings={listings} />
+          </ul>
+        </main>
       ) : (
         <p>No listing for {params.categoryName} </p>
       )}

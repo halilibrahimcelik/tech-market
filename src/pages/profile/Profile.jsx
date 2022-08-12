@@ -97,7 +97,10 @@ const Profile = () => {
           </form>
         </div>
 
-        <div className={styles["user-sale"]}>
+        <div
+          className={styles["user-sale"]}
+          onClick={() => navigate("create-list")}
+        >
           <div>
             <TbShoppingCartPlus className={styles.icon} />
 
