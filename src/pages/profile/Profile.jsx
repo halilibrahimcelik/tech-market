@@ -14,7 +14,7 @@ import { doc, updateDoc } from "firebase/firestore";
 import { db } from "../../helpers/firebase.config";
 
 const Profile = () => {
-  const { auth } = useAuthContext();
+  const { auth, setLoggedIn } = useAuthContext();
 
   const navigate = useNavigate();
   const userInfo = JSON.parse(localStorage.getItem("userInfo"));
@@ -51,6 +51,7 @@ const Profile = () => {
     navigate("/sign-in", { replace: true });
     localStorage.removeItem("token");
     localStorage.removeItem("userInfo");
+    setLoggedIn(false);
   };
 
   return (

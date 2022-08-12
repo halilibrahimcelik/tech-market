@@ -15,12 +15,11 @@ import { useAuthContext } from "../../hook/userAuth";
 
 const SignIn = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const { setToken, token } = useAuthContext();
 
   const mailInput = useRef();
   const passwordInput = useRef();
   const navigate = useNavigate();
-  console.log(token);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -35,7 +34,6 @@ const SignIn = () => {
       );
       if (userCredential.user) {
         navigate("/", { replace: true });
-        setToken(true);
       }
     } catch (error) {
       console.log(error);

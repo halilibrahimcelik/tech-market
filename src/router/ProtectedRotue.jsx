@@ -1,13 +1,21 @@
 import React from "react";
 import { Outlet, Navigate } from "react-router-dom";
+import Spinner from "../components/spinner/Spinner";
 import { useAuthContext } from "../hook/userAuth";
 
 const ProtectedRotue = () => {
-  const { auth } = useAuthContext();
-  const user = JSON.parse(localStorage.getItem("token"));
-  console.log(user);
+  const { loggedIn, checkingStatus } = useAuthContext();
 
-  return auth?.currentUser || user ? <Outlet /> : <Navigate to="/sign-in" />;
+  console.log(loggedIn);
+  if (checkingStatus) {
+    return (
+      <>
+        <Spinner />
+      </>
+    );
+  }
+
+  return loggedIn ? <Outlet /> : <Navigate to="/sign-in" />;
 };
 
 export default ProtectedRotue;
