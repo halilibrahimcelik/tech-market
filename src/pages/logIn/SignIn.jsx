@@ -11,7 +11,7 @@ import { useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { toast } from "react-toastify";
-import { useAuthContext } from "../../hook/userAuth";
+import GoogleAuth from "../../components/GoogleAuth/GoogleAuth";
 
 const SignIn = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -91,7 +91,7 @@ const SignIn = () => {
         </div>
       </form>
 
-      {/*Google Auth*/}
+      <GoogleAuth />
       <Link to="/sign-up" className={styles["sign-up"]}>
         Sign Up Instead{" "}
       </Link>

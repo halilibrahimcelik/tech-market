@@ -18,6 +18,7 @@ import {
 } from "firebase/auth";
 import { db } from "../../helpers/firebase.config";
 import { doc, setDoc, serverTimestamp } from "firebase/firestore";
+import GoogleAuth from "../../components/GoogleAuth/GoogleAuth";
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
   const nameInput = useRef();
@@ -114,7 +115,7 @@ const SignUp = () => {
         </div>
       </form>
 
-      {/*Google Auth*/}
+      <GoogleAuth />
       <Link to="/sign-in" className={styles["sign-up"]}>
         Sign-In Instead{" "}
       </Link>
