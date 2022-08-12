@@ -1,0 +1,47 @@
+@import "../../sass/variables";
+.explore{
+
+}
+.header{
+    font-size: 2rem;
+    font-weight: 800;
+}
+.catagory-header{
+    font-weight: 700;
+    margin-top: 3rem;
+}
+
+.categories{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+   
+    
+    // gap: 2rem;
+}
+.category-product{
+  display: flex;
+  flex-direction: column;
+  justify-content:center ;
+  align-items: center;
+  color:$primary_color;
+  opacity: 1;
+  transition: all 0.3s ease-in;
+  &:hover{
+    opacity: 0.85;
+  }
+  
+ img{
+
+    height: 25vh;
+    min-height:300px ;
+  border-radius: 9px;
+
+    object-fit: contain;
+
+ 
+ }
+ p{
+    font-weight: 500;
+    text-align: left;
+ }
+}

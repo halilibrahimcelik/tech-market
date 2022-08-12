@@ -8,6 +8,7 @@ import SignUp from "../pages/register/SignUp";
 import ForgotPassword from "../pages/forgotPassword/ForgotPassword";
 import Navbar from "../components/navBar/Navbar";
 import ProtectedRotue from "./ProtectedRotue";
+import Category from "../pages/category/Category";
 
 const AppRouter = () => {
   return (
@@ -15,6 +16,7 @@ const AppRouter = () => {
       <Routes>
         <Route path="/" element={<Explore />} />
         <Route path="/offers" element={<Offers />} />
+        <Route path="/category/:categoryName" element={<Category />} />
         <Route path="/sign-in" element={<SignIn />} />
         <Route path="profile" element={<ProtectedRotue />}>
           <Route path="" element={<Profile />} />
