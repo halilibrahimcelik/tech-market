@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800;900&display=swap');
 * {
   box-sizing: border-box;
+
+  
 }
 
 html::-webkit-scrollbar {
@@ -12,4 +14,6 @@ body {
   background-color: #f2f4f8;
   margin: 0;
   box-sizing: border-box;
+  min-height: calc(100vh  + 85px);
+
 }

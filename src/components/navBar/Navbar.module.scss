@@ -1,11 +1,18 @@
-.navBar{
+.navbar-container{
     position: fixed;
     left: 0;
-    bottom: 0;
+    bottom:0 ;
     right: 0;
-    height: 85px;
+    height: 80px;
     background-color: white;
     color:#807d7d;
+    margin-top: 2rem;
+
+}
+.navBar{
+    z-index: 1;
+
+
 
 
     ul{

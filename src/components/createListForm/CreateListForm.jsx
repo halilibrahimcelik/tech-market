@@ -140,7 +140,7 @@ const CreateListForm = ({ handleSubmit, onMutate, formData }) => {
             </button>
           </div>
         </div>
-        <div className={styles["regular-priceDiv"]}>
+        <div className={styles["price-div"]}>
           <label className={styles["form-label"]}> Regular Price </label>
           <input
             className={styles["price-input"]}
@@ -151,9 +151,21 @@ const CreateListForm = ({ handleSubmit, onMutate, formData }) => {
             max={"60000"}
             required
           />
+          {offer && (
+            <>
+              <label className={styles["form-label"]}> Discounted Price </label>
+              <input
+                className={styles["price-input"]}
+                type="number"
+                id="discountedPrice"
+                value={onMutate}
+                min="50"
+                max={"60000"}
+                required
+              />
+            </>
+          )}
         </div>
-
-        {offer && }
       </form>
     </>
   );

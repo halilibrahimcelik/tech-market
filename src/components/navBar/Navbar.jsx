@@ -14,31 +14,33 @@ const Navbar = () => {
     }
   };
   return (
-    <nav className={styles.navBar}>
-      <ul>
-        <li className={pathMatchRoute("/") ? styles.active : null}>
-          <AiOutlineCompass
-            className={styles.icon}
-            onClick={() => navigate("/", {})}
-          />
-          <p>Explore</p>
-        </li>
-        <li className={pathMatchRoute("/offers") ? styles.active : null}>
-          <AiOutlineTags
-            className={styles.icon}
-            onClick={() => navigate("offers")}
-          />
-          <p>Offers</p>
-        </li>
-        <li className={pathMatchRoute("/profile") ? styles.active : null}>
-          <CgProfile
-            className={styles.icon}
-            onClick={() => navigate("profile")}
-          />
-          <p>Profile</p>
-        </li>
-      </ul>
-    </nav>
+    <footer className={styles["navbar-container"]}>
+      <nav className={styles.navBar}>
+        <ul>
+          <li className={pathMatchRoute("/") ? styles.active : null}>
+            <AiOutlineCompass
+              className={styles.icon}
+              onClick={() => navigate("/", {})}
+            />
+            <p>Explore</p>
+          </li>
+          <li className={pathMatchRoute("/offers") ? styles.active : null}>
+            <AiOutlineTags
+              className={styles.icon}
+              onClick={() => navigate("offers")}
+            />
+            <p>Offers</p>
+          </li>
+          <li className={pathMatchRoute("/profile") ? styles.active : null}>
+            <CgProfile
+              className={styles.icon}
+              onClick={() => navigate("profile")}
+            />
+            <p>Profile</p>
+          </li>
+        </ul>
+      </nav>
+    </footer>
   );
 };
 
