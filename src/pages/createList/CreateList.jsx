@@ -46,9 +46,34 @@ const CreateList = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(formData);
   };
 
-  const onMutate = () => {};
+  const onMutate = (e) => {
+    let boolean = null;
+    if (e.target.value === "true") {
+      boolean = true;
+    }
+    if (e.target.value === "false") {
+      boolean = false;
+    }
+
+    //files
+    if (e.target.files) {
+      setFormData((prevState) => ({
+        ...prevState,
+        imageUrls: e.target.files,
+      }));
+    }
+
+    //text//booleans/Numbers
+    if (!e.target.files) {
+      setFormData((prevState) => ({
+        ...prevState,
+        [e.target.id]: boolean ?? e.target.value,
+      }));
+    }
+  };
   if (loading) {
     return <Spinner />;
   }
@@ -63,6 +88,7 @@ const CreateList = () => {
           handleSubmit={handleSubmit}
           onMutate={onMutate}
           formData={formData}
+          geolocationEnabled={geolocationEnabled}
         />
       </main>
     </section>

@@ -1,7 +1,12 @@
 import React from "react";
 import styles from "./CreateListForm.module.scss";
 
-const CreateListForm = ({ handleSubmit, onMutate, formData }) => {
+const CreateListForm = ({
+  handleSubmit,
+  onMutate,
+  formData,
+  geolocationEnabled,
+}) => {
   const {
     type,
     name,
@@ -17,7 +22,7 @@ const CreateListForm = ({ handleSubmit, onMutate, formData }) => {
     offer,
     screenSize,
   } = formData;
-  console.log(formData);
+
   return (
     <>
       <form onSubmit={handleSubmit}>
@@ -50,16 +55,32 @@ const CreateListForm = ({ handleSubmit, onMutate, formData }) => {
             Laptop
           </button>
         </div>
-        <label className={styles["form-label"]}> Name </label>
-        <input
-          type="text"
-          className={styles["form-input"]}
-          value={name}
-          onChange={onMutate}
-          maxLength="32"
-          minLength={"10"}
-          required
-        />
+        <div>
+          <label className={styles["form-label"]}> Description </label>
+          <input
+            type="text"
+            id="name"
+            className={styles["form-input"]}
+            value={name}
+            onChange={onMutate}
+            maxLength="32"
+            minLength={"10"}
+            required
+          />
+        </div>
+        <div>
+          <label className={styles["form-label"]}> Brand </label>
+          <input
+            type="text"
+            id="brand"
+            className={styles["form-input"]}
+            value={brand}
+            onChange={onMutate}
+            maxLength="32"
+            minLength={"5"}
+            required
+          />
+        </div>
 
         <div className={styles["device-features"]}>
           <div>
@@ -78,7 +99,7 @@ const CreateListForm = ({ handleSubmit, onMutate, formData }) => {
             <label className={styles["form-label"]}> Screen Size (inch) </label>
             <input
               type="number"
-              min="4.5"
+              min="5"
               max={"40"}
               required
               id="screenSize"
@@ -92,9 +113,10 @@ const CreateListForm = ({ handleSubmit, onMutate, formData }) => {
             type="text"
             className={styles["form-input"]}
             value={operatingSystem}
+            id="operatingSystem"
             onChange={onMutate}
             maxLength="50"
-            minLength={"10"}
+            minLength={"2"}
             required
           />
         </div>
@@ -111,6 +133,33 @@ const CreateListForm = ({ handleSubmit, onMutate, formData }) => {
             required
           />
         </div>
+
+        {!geolocationEnabled && (
+          <div className={styles["formLatLng"]}>
+            <div>
+              <label className={styles["form-label"]}>Latitude</label>
+              <input
+                className={styles["formInputSmall"]}
+                type="number"
+                id="latitude"
+                value={latitude}
+                onChange={onMutate}
+                required
+              />
+            </div>
+            <div>
+              <label className={styles["form-label"]}>Longitude</label>
+              <input
+                className={styles["formInputSmall"]}
+                type="number"
+                id="longitude"
+                value={longitude}
+                onChange={onMutate}
+                required
+              />
+            </div>
+          </div>
+        )}
         <div>
           <label className={styles["form-label"]}> Offer </label>
           <div className={styles["form-buttons"]}>
@@ -146,7 +195,8 @@ const CreateListForm = ({ handleSubmit, onMutate, formData }) => {
             className={styles["price-input"]}
             type="number"
             id="regularPrice"
-            value={onMutate}
+            value={regularPrice}
+            onChange={onMutate}
             min="50"
             max={"60000"}
             required
@@ -158,14 +208,39 @@ const CreateListForm = ({ handleSubmit, onMutate, formData }) => {
                 className={styles["price-input"]}
                 type="number"
                 id="discountedPrice"
-                value={onMutate}
+                value={discountedPrice}
+                onChange={onMutate}
                 min="50"
                 max={"60000"}
-                required
+                required={offer}
               />
             </>
           )}
         </div>
+
+        <div>
+          <label className={styles["form-label"]}> Discounted Price </label>
+          <p>The first image will be the cover(max 6). </p>
+          <input
+            type="file"
+            className={styles["form-image"] + " " + styles["form-input"]}
+            id="imageUrls"
+            max="6"
+            accept=".jpg,.png,.jpeg"
+            onChange={onMutate}
+            multiple
+            required
+          />
+        </div>
+
+        <button
+          type="submit"
+          className={
+            styles["primary-button"] + " " + styles["form-button-active"]
+          }
+        >
+          Submit Your Listing
+        </button>
       </form>
     </>
   );
