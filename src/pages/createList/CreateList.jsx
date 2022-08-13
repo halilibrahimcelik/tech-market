@@ -5,6 +5,7 @@ import Spinner from "../../components/spinner/Spinner";
 import { useRef } from "react";
 import styles from "./CreateList.module.scss";
 import CreateListForm from "../../components/createListForm/CreateListForm";
+import { toast } from "react-toastify";
 const CreateList = () => {
   const [geolocationEnabled, setGeolocationEnabled] = useState(true);
   const [loading, setLoading] = useState(false);
@@ -23,6 +24,21 @@ const CreateList = () => {
     latitude: 0,
     longitude: 0,
   });
+  const {
+    type,
+    name,
+    ramMemory,
+    brand,
+    imageUrls,
+    address,
+    regularPrice,
+    discountedPrice,
+    operatingSystem,
+    latitude,
+    longitude,
+    offer,
+    screenSize,
+  } = formData;
 
   const auth = getAuth();
   const navigate = useNavigate();
@@ -44,9 +60,42 @@ const CreateList = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
+    setLoading(true);
+    if (discountedPrice >= regularPrice) {
+      setLoading(false);
+      toast.warning(
+        "Your discounted price need to be lower than original price! "
+      );
+      return;
+    }
+
+    if (imageUrls.length > 6) {
+      setLoading(false);
+      toast.error("You can upload max 6 images");
+      return;
+    }
+
+    let geolaction = {};
+    let location;
+
+    if (geolocationEnabled) {
+      try {
+        const API_KEY = process.env.REACT_APP_GEOCODING_API;
+        const URL = `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${API_KEY}`;
+        const response = await fetch(URL);
+        const data = await response.json();
+        console.log(data);
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      geolaction.lat = latitude;
+      geolaction.lng = longitude;
+      location = address;
+    }
+    setLoading(false);
   };
 
   const onMutate = (e) => {
