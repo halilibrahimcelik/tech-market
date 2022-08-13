@@ -24,21 +24,6 @@ const CreateList = () => {
     longitude: 0,
   });
 
-  const {
-    type,
-    name,
-    ramMemory,
-    brand,
-    imageUrls,
-    address,
-    regularPrice,
-    discountedPrice,
-    operatingSystem,
-    latitude,
-    longitude,
-    offer,
-    screenSize,
-  } = formData;
   const auth = getAuth();
   const navigate = useNavigate();
   const isMounted = useRef(true);
@@ -53,7 +38,6 @@ const CreateList = () => {
         }
       });
     }
-
     return () => {
       isMounted.current = false;
     };
@@ -64,6 +48,7 @@ const CreateList = () => {
     e.preventDefault();
   };
 
+  const onMutate = () => {};
   if (loading) {
     return <Spinner />;
   }
@@ -74,7 +59,11 @@ const CreateList = () => {
         <p>Create Your List!</p>
       </header>
       <main>
-        <CreateListForm handleSubmit={handleSubmit} />
+        <CreateListForm
+          handleSubmit={handleSubmit}
+          onMutate={onMutate}
+          formData={formData}
+        />
       </main>
     </section>
   );
