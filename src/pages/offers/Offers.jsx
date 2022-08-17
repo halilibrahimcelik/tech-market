@@ -35,7 +35,6 @@ const Offers = () => {
         const querySnap = await getDocs(newQuery);
         let listingArray = [];
         querySnap.forEach((doc) => {
-          console.log(doc.data());
           return listingArray.push({
             id: doc.id, //id doc.data() içinde yok manuel olarak ekliyoru<
             ...doc.data(),
@@ -43,7 +42,7 @@ const Offers = () => {
         });
 
         setListings(listingArray);
-        console.log(listingArray);
+
         setLoading(false);
       } catch (error) {
         toast.error(error.message);
