@@ -1,6 +1,8 @@
 # Welcome to Tech-Market
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+ [Website Link](https://tech-market.vercel.app/).
+
+
 This  project aims to display demo e-commerce website. 
 
 Techniques I have used in this project;
