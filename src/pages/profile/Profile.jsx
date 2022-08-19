@@ -18,7 +18,6 @@ const Profile = () => {
 
   const navigate = useNavigate();
   const userInfo = JSON.parse(localStorage.getItem("userInfo"));
-  console.log(userInfo);
 
   const [changeDetails, setChangeDetails] = useState(false);
   const [name, setName] = useState(

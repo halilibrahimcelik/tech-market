@@ -9,7 +9,6 @@ import { HiCurrencyDollar } from "react-icons/hi";
 import { BsLaptop, BsPhone } from "react-icons/bs";
 
 const Listings = ({ listings, onDelete }) => {
-  console.log(listings);
   return (
     <>
       {listings.map((listing) => {

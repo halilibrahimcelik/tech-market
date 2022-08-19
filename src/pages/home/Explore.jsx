@@ -9,7 +9,6 @@ import { Link } from "react-router-dom";
 
 const Explore = () => {
   const { auth } = useAuthContext();
-  console.log(auth);
 
   // if (auth?.currentUser) {
   //   toast(<CustomToastify />);
