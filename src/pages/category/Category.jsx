@@ -20,6 +20,7 @@ const Category = () => {
 
   const params = useParams();
   useEffect(() => {
+    //!fetching the data from the firebase
     const fetchData = async () => {
       try {
         //?getting reference
@@ -38,7 +39,7 @@ const Category = () => {
         querySnap.forEach((doc) => {
           console.log(doc.data());
           return listingArray.push({
-            id: doc.id, //id doc.data() içinde yok manuel olarak ekliyoru<
+            id: doc.id, //id is not located in  doc.data() we manually add this
             ...doc.data(),
           });
         });
@@ -51,7 +52,7 @@ const Category = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [params.categoryName]);
   return (
     <section className={styles.container}>
       <header>
