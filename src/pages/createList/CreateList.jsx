@@ -82,11 +82,22 @@ const CreateList = () => {
 
     if (geolocationEnabled) {
       try {
-        const API_KEY = process.env.REACT_APP_GEOCODING_API_KEY_PRODD;
+        const API_KEY = process.env.REACT_APP_GEOCODING_API_KEY_DEP;
         const URL = `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${API_KEY}`;
         const response = await fetch(URL);
         const data = await response.json();
         console.log(data);
+        geolaction.lat = data.results[0]?.geometry.location.lat ?? 0;
+        geolaction.lng = data.results[0]?.geometry.location.lng ?? 0;
+        location =
+          data.status === "ZERO_RESULTS"
+            ? undefined
+            : data.results[0]?.formatted_address;
+        if (location === undefined || location.includes("undefined")) {
+          setLoading(false);
+          toast.error("Please enter a correct address");
+          return;
+        }
       } catch (error) {
         console.log(error);
       }
@@ -94,6 +105,7 @@ const CreateList = () => {
       geolaction.lat = latitude;
       geolaction.lng = longitude;
       location = address;
+      console.log(geolaction, location);
     }
     setLoading(false);
   };
