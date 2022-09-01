@@ -91,7 +91,7 @@ const CreateList = () => {
 
     if (geolocationEnabled) {
       try {
-        const API_KEY = process.env.REACT_APP_GEOCODING_API_KEY_PRODD;
+        const API_KEY = process.env.REACT_APP_GEOCODING_API_KEY_DEP;
         const URL = `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${API_KEY}`;
         const response = await fetch(URL);
         const data = await response.json();
@@ -162,24 +162,24 @@ const CreateList = () => {
       return;
     });
 
-    // const formDataUpdated = {
-    //   ...formData,
-    //   imgURLs,
-    //   geolaction,
-    //   timestamp: serverTimestamp(),
-    // };
-    // //delete unnessary data from fromData
-    // delete formDataUpdated.imageUrls;
-    // delete formDataUpdated.address;
-    // location && (formDataUpdated.location = location);
-    // !formDataUpdated.offer && delete formDataUpdated.discountedPrice;
+    const formDataUpdated = {
+      ...formData,
+      imgURLs,
+      geolaction,
+      timestamp: serverTimestamp(),
+    };
+    //delete unnessary data from fromData
+    delete formDataUpdated.imageUrls;
+    delete formDataUpdated.address;
+    location && (formDataUpdated.location = location);
+    !formDataUpdated.offer && delete formDataUpdated.discountedPrice;
 
-    // //!added newly updated formDAta to Firestore
-    // const docRef = await addDoc(collection(db, "listings"), formDataUpdated);
-    // // console.log(imgURLs);
+    //!added newly updated formDAta to Firestore
+    const docRef = await addDoc(collection(db, "listings"), formDataUpdated);
+    // console.log(imgURLs);
     setLoading(false);
     toast.success("Listing saved");
-    // navigate(`/category/${formDataUpdated.type}/${docRef.id}`);
+    navigate(`/category/${formDataUpdated.type}/${docRef.id}`);
   };
 
   const onMutate = (e) => {
