@@ -6,6 +6,7 @@ import {
   uploadBytesResumable,
   getDownloadURL,
 } from "firebase/storage";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "../../helpers/firebase.config";
 import { v4 as uuidv4 } from "uuid";
 import { useNavigate } from "react-router-dom";
@@ -90,7 +91,7 @@ const CreateList = () => {
 
     if (geolocationEnabled) {
       try {
-        const API_KEY = process.env.REACT_APP_GEOCODING_API_KEY_DEP;
+        const API_KEY = process.env.REACT_APP_GEOCODING_API_KEY_PRODD;
         const URL = `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${API_KEY}`;
         const response = await fetch(URL);
         const data = await response.json();
@@ -153,7 +154,32 @@ const CreateList = () => {
       });
     };
 
+    const imgURLs = await Promise.all(
+      [...imageUrls].map((image) => storeImage(image))
+    ).catch(() => {
+      setLoading(false);
+      toast.error("images not uploaded");
+      return;
+    });
+
+    // const formDataUpdated = {
+    //   ...formData,
+    //   imgURLs,
+    //   geolaction,
+    //   timestamp: serverTimestamp(),
+    // };
+    // //delete unnessary data from fromData
+    // delete formDataUpdated.imageUrls;
+    // delete formDataUpdated.address;
+    // location && (formDataUpdated.location = location);
+    // !formDataUpdated.offer && delete formDataUpdated.discountedPrice;
+
+    // //!added newly updated formDAta to Firestore
+    // const docRef = await addDoc(collection(db, "listings"), formDataUpdated);
+    // // console.log(imgURLs);
     setLoading(false);
+    toast.success("Listing saved");
+    // navigate(`/category/${formDataUpdated.type}/${docRef.id}`);
   };
 
   const onMutate = (e) => {
