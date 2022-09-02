@@ -17,7 +17,6 @@ const Offers = () => {
   const [listings, setListings] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  const params = useParams();
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -47,6 +46,7 @@ const Offers = () => {
       } catch (error) {
         toast.error(error.message);
       }
+      console.log(listings);
     };
     fetchData();
   }, []);

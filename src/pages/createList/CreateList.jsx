@@ -23,7 +23,7 @@ const CreateList = () => {
     name: "",
     ramMemory: "",
     brand: "",
-    imageUrls: {},
+    images: {},
     address: "",
     offer: false,
     regularPrice: 0,
@@ -38,7 +38,7 @@ const CreateList = () => {
     name,
     ramMemory,
     brand,
-    imageUrls,
+    images,
     address,
     regularPrice,
     discountedPrice,
@@ -80,7 +80,7 @@ const CreateList = () => {
       return;
     }
 
-    if (imageUrls.length > 6) {
+    if (images.length > 6) {
       setLoading(false);
       toast.error("You can upload max 6 images");
       return;
@@ -154,8 +154,8 @@ const CreateList = () => {
       });
     };
 
-    const imgURLs = await Promise.all(
-      [...imageUrls].map((image) => storeImage(image))
+    const imageUrls = await Promise.all(
+      [...images].map((image) => storeImage(image))
     ).catch(() => {
       setLoading(false);
       toast.error("images not uploaded");
@@ -164,19 +164,19 @@ const CreateList = () => {
 
     const formDataUpdated = {
       ...formData,
-      imgURLs,
+      imageUrls,
       geolaction,
       timestamp: serverTimestamp(),
     };
     //delete unnessary data from fromData
-    delete formDataUpdated.imageUrls;
+    delete formDataUpdated.images;
     delete formDataUpdated.address;
     location && (formDataUpdated.location = location);
     !formDataUpdated.offer && delete formDataUpdated.discountedPrice;
 
     //!added newly updated formDAta to Firestore
     const docRef = await addDoc(collection(db, "listings"), formDataUpdated);
-    // console.log(imgURLs);
+    // console.log(imageUrls);
     setLoading(false);
     toast.success("Listing saved");
     navigate(`/category/${formDataUpdated.type}/${docRef.id}`);
@@ -195,7 +195,7 @@ const CreateList = () => {
     if (e.target.files) {
       setFormData((prevState) => ({
         ...prevState,
-        imageUrls: e.target.files,
+        images: e.target.files,
       }));
     }
 
