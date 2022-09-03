@@ -15,7 +15,7 @@ import Spinner from "../../components/spinner/Spinner";
 import styles from "./Category.module.scss";
 import Listings from "../../components/listings/Listings";
 const Category = () => {
-  const [listings, setListings] = useState(null);
+  const [listings, setListings] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const params = useParams();
@@ -35,6 +35,7 @@ const Category = () => {
 
         //Execute query
         const querySnap = await getDocs(newQuery);
+        console.log(querySnap);
         let listingArray = [];
         querySnap.forEach((doc) => {
           console.log(doc.data());
@@ -44,7 +45,7 @@ const Category = () => {
           });
         });
 
-        setListings(listingArray);
+        setListings((prevState) => [...prevState, ...listingArray]);
         console.log(listingArray);
         setLoading(false);
       } catch (error) {

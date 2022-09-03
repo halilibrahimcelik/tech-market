@@ -166,7 +166,7 @@ const CreateList = () => {
       ...formData,
       imageUrls,
       geolaction,
-      timestamp: serverTimestamp(),
+      timeStamp: serverTimestamp(),
     };
     //delete unnessary data from fromData
     delete formDataUpdated.images;
