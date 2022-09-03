@@ -46,7 +46,7 @@ const Category = () => {
         });
 
         setListings((prevState) => [...prevState, ...listingArray]);
-        console.log(listingArray);
+
         setLoading(false);
       } catch (error) {
         toast.error(error.message);

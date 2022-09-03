@@ -1,6 +1,7 @@
 @import "../../sass/variables";
 .product{
     display: flex;
+    margin-bottom: 1rem;
     gap: 3rem;
     justify-content: center;
     align-items: center;
@@ -70,4 +71,13 @@
     position: absolute;
     top: -3%;
     right: -2%;
+  }
+
+  @media (min-width:950px){
+    .product{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-content: space-between;
+        gap:1rem
+    }
   }
