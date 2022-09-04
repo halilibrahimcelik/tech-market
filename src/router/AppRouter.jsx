@@ -10,6 +10,7 @@ import Navbar from "../components/navBar/Navbar";
 import ProtectedRotue from "./ProtectedRotue";
 import Category from "../pages/category/Category";
 import CreateList from "../pages/createList/CreateList";
+import ListProduct from "../pages/listProduct/ListProduct";
 
 const AppRouter = () => {
   return (
@@ -28,6 +29,10 @@ const AppRouter = () => {
 
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route
+          path="/category/:categoryName/:listingId"
+          element={<ListProduct />}
+        />
       </Routes>
       <Navbar />
     </BrowserRouter>
