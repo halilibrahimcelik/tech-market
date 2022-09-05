@@ -7,6 +7,7 @@ import { db } from "../../helpers/firebase.config";
 import { FiShare2 } from "react-icons/fi";
 import { useAuthContext } from "../../hook/userAuth";
 import { toast } from "react-toastify";
+import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 
 const ListProduct = () => {
   const [listing, setListing] = useState([]);
@@ -29,9 +30,10 @@ const ListProduct = () => {
     timeStamp,
     type,
     discountedPrice,
-    geoLocation,
+    geolaction,
     userRef,
   } = listing;
+  console.log(listing);
   useEffect(() => {
     const fetchListing = async () => {
       try {
@@ -55,7 +57,7 @@ const ListProduct = () => {
   if (loading) {
     return <Spinner />;
   }
-  console.log(auth);
+
   return (
     <main className={styles.container}>
       {/* <p>Slider</p> */}
@@ -96,7 +98,22 @@ const ListProduct = () => {
         </ul>
 
         <p className={styles["listing-location-title"]}>Location</p>
-        {/* MAP */}
+        <div className={styles["leaf-container"]}>
+          <MapContainer
+            style={{ height: "100%", width: "100%" }}
+            center={[geolaction?.lat, geolaction?.lng]}
+            zoom={13}
+            scrollWheelZoom={false}
+          >
+            <TileLayer
+              attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png"
+            />
+            <Marker position={[geolaction?.lat, geolaction?.lng]}>
+              <Popup>{location} </Popup>
+            </Marker>
+          </MapContainer>
+        </div>
       </div>
 
       {/* //?checking  whether the list belong to registered user or not  */}
