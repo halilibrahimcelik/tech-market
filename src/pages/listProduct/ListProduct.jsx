@@ -34,19 +34,21 @@ const ListProduct = () => {
   } = listing;
   useEffect(() => {
     const fetchListing = async () => {
-      const docRef = doc(db, "listings", params.listingId);
-
-      const docSnap = await getDoc(docRef);
-      if (docSnap.exists()) {
-        setListing(docSnap.data());
-        setLoading(false);
-      } else {
-        toast.error("Could not fetch the data");
-      }
-
       try {
+        const docRef = doc(db, "listings", params.listingId);
+
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          setListing(docSnap.data());
+          setLoading(false);
+        } else {
+          toast.error("Could not fetch the data");
+        }
+
         setLoading(false);
-      } catch (error) {}
+      } catch (error) {
+        toast.error(error.message);
+      }
     };
     fetchListing();
   }, [params.listingId]);
@@ -101,7 +103,7 @@ const ListProduct = () => {
 
       {auth.currentUser?.uid !== userRef && (
         <Link
-          to={`/contact/${userRef}?listingName=${name}?listingLocation=${location}`}
+          to={`/contact/${userRef}?listingName=${name}`}
           className={styles["contact-button"]}
         >
           Contact the Dealer !

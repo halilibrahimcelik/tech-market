@@ -11,6 +11,7 @@ import ProtectedRotue from "./ProtectedRotue";
 import Category from "../pages/category/Category";
 import CreateList from "../pages/createList/CreateList";
 import ListProduct from "../pages/listProduct/ListProduct";
+import ContactDealer from "../pages/contactDealer/ContactDealer";
 
 const AppRouter = () => {
   return (
@@ -33,6 +34,7 @@ const AppRouter = () => {
           path="/category/:categoryName/:listingId"
           element={<ListProduct />}
         />
+        <Route path="/contact/:dealerId" element={<ContactDealer />} />
       </Routes>
       <Navbar />
     </BrowserRouter>

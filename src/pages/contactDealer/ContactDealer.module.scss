@@ -1,0 +1,47 @@
+
+.container{
+ max-width: 40rem;
+ margin-left: auto;
+ margin-right: auto;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+
+
+}
+.formArea{
+    display: flex;
+    flex-direction: column;
+    gap:2rem;
+
+
+
+    a{
+        align-self: center;
+    text-decoration: none;
+      
+      
+       
+    }
+}
+
+
+.send-button{
+    cursor: pointer;
+color:#fff;
+    display: flex;
+    padding:0.1rem 2rem;
+  align-items: center;
+  gap:0.4rem;
+  font-size: 1.5rem;
+  border-radius: 20px;
+  border: none;
+  background-color:#F2AE30;
+  opacity: 1;
+  transition: all 0.4s ease-in;
+  &:hover{
+    color:rgb(255, 255, 255);
+    background-color: #a57214;
+    opacity: 0.7;
+  }
+}
