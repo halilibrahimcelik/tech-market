@@ -15,7 +15,23 @@ const ListProduct = () => {
   const navigate = useNavigate();
   const params = useParams();
   const { auth } = useAuthContext();
-
+  const {
+    id,
+    brand,
+    imageUrls,
+    name,
+    location,
+    offer,
+    operatingSystem,
+    ramMemory,
+    regularPrice,
+    screentSize,
+    timeStamp,
+    type,
+    discountedPrice,
+    geoLocation,
+    userRef,
+  } = listing;
   useEffect(() => {
     const fetchListing = async () => {
       const docRef = doc(db, "listings", params.listingId);
@@ -34,8 +50,65 @@ const ListProduct = () => {
     };
     fetchListing();
   }, [params.listingId]);
+  if (loading) {
+    return <Spinner />;
+  }
+  console.log(auth);
+  return (
+    <main className={styles.container}>
+      {/* <p>Slider</p> */}
+      <div
+        className={styles.linkCoppied}
+        onClick={() => {
+          navigator.clipboard.writeText(window.location.href);
+          setLinkCoppied(true);
+          setTimeout(() => {
+            setLinkCoppied(false);
+          }, 1000);
+        }}
+      >
+        <FiShare2 />
+      </div>
+      {linkCoppied && <p className={styles.linkInfo}>Link Coppied!</p>}
 
-  return <div>ListProduct</div>;
+      <div className={styles.listingDetails}>
+        <p className={styles.listingName}>
+          {name} - $
+          {offer
+            ? discountedPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+            : regularPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+        </p>
+
+        <p className={styles.listingLocation}>{location} </p>
+        <div className={styles["product-list-badge"]}>
+          <p className={styles.listingBrand}> {brand}</p>
+          <p className={styles.discountedPrice}>
+            {regularPrice - discountedPrice}$ Discount
+          </p>
+        </div>
+
+        <ul className={styles.productDetail}>
+          <li>Screen size (inc) {screentSize} </li>
+          <li>SSD-memory {ramMemory} </li>
+          <li>Operating system {operatingSystem} </li>
+        </ul>
+
+        <p className={styles["listing-location-title"]}>Location</p>
+        {/* MAP */}
+      </div>
+
+      {/* //?checking  whether the list belong to registered user or not  */}
+
+      {auth.currentUser?.uid !== userRef && (
+        <Link
+          to={`/contact/${userRef}?listingName=${name}?listingLocation=${location}`}
+          className={styles["contact-button"]}
+        >
+          Contact the Dealer !
+        </Link>
+      )}
+    </main>
+  );
 };
 
 export default ListProduct;

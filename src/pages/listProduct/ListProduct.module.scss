@@ -1,0 +1,98 @@
+.container{
+    // margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+
+
+}
+.linkCoppied{
+  
+align-self: flex-end;
+font-size: 2rem;
+
+}
+.linkInfo{
+    align-self: flex-end;
+ padding: 0.4rem 0.8rem;
+    background-color: #fff;
+    text-align: right;
+    border-radius: 20px;
+    font-weight: 800;
+  
+   
+    
+}
+
+.listingDetails{
+    display: flex;
+    flex-direction: column;
+    gap:0.5rem;
+    p{
+        margin:0;
+    }
+
+}
+.listingName{
+    font-weight: 800;
+    font-size: 1.5rem;
+}
+.listingLocation{
+    font-style: italic;
+}
+.product-list-badge{
+    display: flex;
+    gap: 2rem;
+}
+.listingBrand{
+
+    color:rgb(215, 212, 212);
+    font-weight: 800;
+    background-color: rgb(111, 51, 51);
+    width: max-content;
+    padding:0.4rem 0.8rem;
+    border-radius: 20px;
+    box-shadow: 1px 0px 9px 1px rgba(0,0,0,0.5);
+    
+
+    
+}
+.discountedPrice{
+
+    color:rgb(215, 212, 212);
+    font-weight: 800;
+    background-color: rgb(49, 24, 24);
+    width: max-content;
+    padding:0.4rem 0.8rem;
+
+    border-radius: 20px;
+    box-shadow: 1px 0px 9px 1px rgba(0,0,0,0.5);
+}
+.productDetail{
+    color:#807D7D;
+    list-style-type:none;
+padding: 0;
+}
+.listing-location-title{
+padding: 2rem 0;
+font-size: 1.5rem;
+font-weight: 800;
+}
+
+.contact-button{
+    text-decoration:  none;
+    align-self: center;
+    color:rgb(215, 212, 212);
+    font-weight: 800;
+    background-color: rgb(64, 123, 88);
+    width: max-content;
+    padding:1rem 2rem;
+
+    border-radius: 20px;
+    box-shadow: 1px 0px 9px 1px rgba(0,0,0,0.5);
+    transition: all 0.8s ease-out;
+    transform:rotateY(0);
+    &:hover{
+    transform: rotateY(360deg);
+
+    }
+}
