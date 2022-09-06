@@ -8,7 +8,10 @@ import { FiShare2 } from "react-icons/fi";
 import { useAuthContext } from "../../hook/userAuth";
 import { toast } from "react-toastify";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
-
+import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/swiper-bundle.min.css";
+import "swiper/swiper.min.css";
 const ListProduct = () => {
   const [listing, setListing] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -57,10 +60,27 @@ const ListProduct = () => {
   if (loading) {
     return <Spinner />;
   }
-
+  console.log(imageUrls[0]);
   return (
     <main className={styles.container}>
-      {/* <p>Slider</p> */}
+      <Swiper
+        className={styles["swiper-container"]}
+        slidesPerView={1}
+        pagination={{ clickable: true }}
+      >
+        {imageUrls.map((url, index) => (
+          <SwiperSlide key={index}>
+            <div
+              className={styles["swiper-slides"]}
+              style={{
+                backgroundImage: "url(" + imageUrls[index] + ")",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+              }}
+            ></div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
       <div
         className={styles.linkCoppied}
         onClick={() => {

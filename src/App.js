@@ -1,7 +1,7 @@
 import Container from "./components/UI/Container";
 import AppRouter from "./router/AppRouter";
 import { ToastContainer, Flip } from "react-toastify";
-
+import "swiper/swiper-bundle.css";
 function App() {
   return (
     <Container>
