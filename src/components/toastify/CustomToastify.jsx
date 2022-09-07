@@ -16,7 +16,7 @@ const CustomToastify = () => {
         </g>
       </svg>
 
-      <p>Welcome to Tech-Market</p>
+      <p>Welcome Back!</p>
     </div>
   );
 };

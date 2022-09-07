@@ -6,20 +6,21 @@ import laptopImg from "../../assets/laptop image.jpg";
 import phoneImg from "../../assets/phone-image.jpg";
 import styles from "./Explore.module.scss";
 import { Link } from "react-router-dom";
+import Slider from "../../components/slider/Slider";
 
 const Explore = () => {
   const { auth } = useAuthContext();
 
-  // if (auth?.currentUser) {
-  //   toast(<CustomToastify />);
-  // }
+  if (auth?.currentUser) {
+    toast(<CustomToastify />);
+  }
   return (
     <section className={styles.explore}>
       <header className={styles.header}>
         <p>Explore</p>
       </header>
       <main>
-        {/*Slider*/}
+        <Slider />
         <p className={styles["category-header"]}>Categories</p>
         <div className={styles.categories}>
           <div>
