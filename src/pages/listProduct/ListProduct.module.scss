@@ -2,6 +2,8 @@
     // margin-top: 4rem;
     display: flex;
     flex-direction: column;
+    height: max-content;
+    padding-bottom:10rem;
 
 
 }
@@ -92,6 +94,7 @@ font-weight: 800;
 .contact-button{
     text-decoration:  none;
     align-self: center;
+    margin-top: 2rem;
     color:rgb(215, 212, 212);
     font-weight: 800;
     background-color: rgb(64, 123, 88);
@@ -110,8 +113,9 @@ font-weight: 800;
 .leaf-container{
     width: 100%;
     height: 200px;
-    overflow-x: hidden;
-    margin-bottom: 3rem;
+ 
+    // margin-bottom: 3rem;
+ 
 }
 .swiper-container {
     position: relative;

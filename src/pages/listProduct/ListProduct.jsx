@@ -12,6 +12,7 @@ import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.min.css";
 import "swiper/swiper.min.css";
+SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 const ListProduct = () => {
   const [listing, setListing] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -120,7 +121,7 @@ const ListProduct = () => {
         <p className={styles["listing-location-title"]}>Location</p>
         <div className={styles["leaf-container"]}>
           <MapContainer
-            style={{ height: "100%", width: "100%" }}
+            style={{ height: "100%", width: "100%", overflow: "hidden" }}
             center={[geolaction?.lat, geolaction?.lng]}
             zoom={13}
             scrollWheelZoom={false}
