@@ -47,8 +47,10 @@ const Slider = () => {
   }
   return (
     listings && (
-      <>
-        <p>Recomended</p>
+      <div className={styles["slider-container"]}>
+        <header>
+          <p>Recomended</p>
+        </header>
         <Swiper
           className={styles["swiper-container"]}
           slidesPerView={1}
@@ -57,6 +59,7 @@ const Slider = () => {
           {listings.map(({ data, id }) => {
             return (
               <SwiperSlide
+                className={styles.swiperSlide}
                 key={id}
                 onClick={() => navigate(`/category/${data.type}/${id}`)}
               >
@@ -66,14 +69,16 @@ const Slider = () => {
                     backgroundImage: "url(" + data.imageUrls[0] + ")",
                   }}
                 >
-                  <p>{data.name} </p>
-                  <p>{data.regularPrice} </p>
+                  <p className={styles["product-name"]}>{data.name} </p>
+                  <p className={styles["product-price"]}>
+                    {data.regularPrice} $
+                  </p>
                 </div>
               </SwiperSlide>
             );
           })}
         </Swiper>
-      </>
+      </div>
     )
   );
 };

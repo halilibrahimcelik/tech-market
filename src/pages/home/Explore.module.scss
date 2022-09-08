@@ -1,15 +1,22 @@
 @import "../../sass/variables";
 .explore{
+display: flex;
+flex-direction: column;
+padding-bottom: 10rem;
 
 }
 .header{
-    font-size: 2rem;
+  p{
+
     font-weight: 800;
+    font-size: 3rem;
+  }
 }
 .category-header{
-    font-weight: 700;
+    font-weight: 800;
+    font-size: 1.2rem;
     margin-top: 3rem;
-    text-decoration: underline;
+ 
 }
 
 .categories{
@@ -45,4 +52,15 @@
     font-weight: 500;
     text-align: left;
  }
+}
+
+@media (max-width:768px){
+  .categories{
+    display: grid;
+    grid-template-columns: 1fr ;
+    grid-template-rows: 1fr  1fr;
+   
+    
+    // gap: 2rem;
+}
 }
