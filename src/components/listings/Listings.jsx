@@ -77,7 +77,7 @@ const Listings = ({ listings, onDelete }) => {
             {onDelete && (
               <MdDelete
                 className={styles.removeIcon}
-                onClick={() => onDelete(id)}
+                onClick={() => onDelete(id, name)}
               />
             )}
           </li>

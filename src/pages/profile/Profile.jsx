@@ -90,8 +90,8 @@ const Profile = () => {
     setLoggedIn(false);
   };
 
-  const onDeleteHandler = async (listingId) => {
-    if (window.confirm("Are You you want to delete?")) {
+  const onDeleteHandler = async (listingId, name) => {
+    if (window.confirm(`Are  you sure you want to delete ${name} ?`)) {
       await deleteDoc(doc(db, "listings", listingId));
       const updatedListings = listings.filter(
         (listing) => listing.id !== listingId
