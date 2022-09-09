@@ -10,7 +10,6 @@ import { BsLaptop, BsPhone } from "react-icons/bs";
 import { TiEdit } from "react-icons/ti";
 
 const Listings = ({ listings, onDelete, onEdit }) => {
-  console.log(onDelete);
   return (
     <>
       {listings.map((listing) => {

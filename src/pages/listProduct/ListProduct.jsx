@@ -17,11 +17,9 @@ const ListProduct = () => {
   const [listing, setListing] = useState([]);
   const [loading, setLoading] = useState(true);
   const [linkCoppied, setLinkCoppied] = useState(false);
-  const navigate = useNavigate();
   const params = useParams();
   const { auth } = useAuthContext();
   const {
-    id,
     brand,
     imageUrls,
     name,
@@ -31,13 +29,12 @@ const ListProduct = () => {
     ramMemory,
     regularPrice,
     screentSize,
-    timeStamp,
-    type,
+
     discountedPrice,
     geolaction,
     userRef,
   } = listing;
-  console.log(listing);
+
   useEffect(() => {
     const fetchListing = async () => {
       try {
@@ -61,7 +58,7 @@ const ListProduct = () => {
   if (loading) {
     return <Spinner />;
   }
-  console.log(imageUrls[0]);
+
   return (
     <main className={styles.container}>
       <Swiper

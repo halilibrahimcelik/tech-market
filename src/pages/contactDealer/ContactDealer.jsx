@@ -10,9 +10,9 @@ const ContactDealer = () => {
   const [dealer, setDealer] = useState(null);
 
   const [message, setMessage] = useState("");
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const params = useParams();
-  console.log(searchParams.get("listingName"));
+
   useEffect(() => {
     const getDealer = async () => {
       try {
@@ -30,7 +30,6 @@ const ContactDealer = () => {
     };
     getDealer();
   }, [params.dealerId]);
-  console.log(message);
 
   return (
     <main className={styles.container}>

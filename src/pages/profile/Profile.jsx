@@ -62,7 +62,7 @@ const Profile = () => {
     };
     fetchUserListing();
   }, [auth.currentUser.uid]);
-  console.log(listings);
+
   const handleSubmit = async () => {
     try {
       if (auth?.currentUser?.displayName !== name) {
