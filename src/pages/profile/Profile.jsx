@@ -103,6 +103,10 @@ const Profile = () => {
   if (loading) {
     return <Spinner />;
   }
+
+  const onEditHandler = (listindId) => {
+    navigate(`/edit-listing/${listindId}`);
+  };
   return (
     <section className={styles.profile}>
       <header>
@@ -169,9 +173,9 @@ const Profile = () => {
         <>
           <p className={styles["listing-text"]}>Your List!</p>
           <Listings
-            key={listings.id}
             listings={listings}
             onDelete={onDeleteHandler}
+            onEdit={onEditHandler}
           />
         </>
       )}

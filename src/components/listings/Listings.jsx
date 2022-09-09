@@ -7,8 +7,9 @@ import { CgSmartphoneRam } from "react-icons/cg";
 import { GrLocation } from "react-icons/gr";
 import { HiCurrencyDollar } from "react-icons/hi";
 import { BsLaptop, BsPhone } from "react-icons/bs";
+import { TiEdit } from "react-icons/ti";
 
-const Listings = ({ listings, onDelete }) => {
+const Listings = ({ listings, onDelete, onEdit }) => {
   console.log(onDelete);
   return (
     <>
@@ -75,10 +76,23 @@ const Listings = ({ listings, onDelete }) => {
             </div>
 
             {onDelete && (
-              <MdDelete
-                className={styles.removeIcon}
-                onClick={() => onDelete(id, name)}
-              />
+              <div className={styles["delete-container"]}>
+                <MdDelete
+                  className={styles["remove-icon"]}
+                  onClick={() => onDelete(id, name)}
+                />
+                <p className={styles["edit-text"]}>Delete your List</p>
+              </div>
+            )}
+
+            {onEdit && (
+              <div className={styles["edit-container"]}>
+                <TiEdit
+                  className={styles["edit-icon"]}
+                  onClick={() => onEdit(id)}
+                />
+                <p className={styles["edit-text"]}>Edit your List</p>
+              </div>
             )}
           </li>
         );

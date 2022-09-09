@@ -7,6 +7,7 @@ import {
   where,
   orderBy,
   limit,
+  startAfter,
 } from "firebase/firestore";
 import { db } from "../../helpers/firebase.config";
 import { toast } from "react-toastify";
@@ -16,7 +17,7 @@ import Listings from "../../components/listings/Listings";
 const Offers = () => {
   const [listings, setListings] = useState(null);
   const [loading, setLoading] = useState(true);
-
+  const [lastFetchedListing, setLastFetchListing] = useState(null);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -27,11 +28,15 @@ const Offers = () => {
           listingsRef,
           where("offer", "==", true),
           orderBy("timeStamp", "desc"),
-          limit(10)
+          limit(2)
         );
 
         //Execute query
         const querySnap = await getDocs(newQuery);
+        const lastVisible = querySnap.docs[querySnap.docs.length - 1];
+
+        setLastFetchListing(lastVisible);
+
         let listingArray = [];
         querySnap.forEach((doc) => {
           return listingArray.push({
@@ -46,10 +51,45 @@ const Offers = () => {
       } catch (error) {
         toast.error(error.message);
       }
-      console.log(listings);
     };
     fetchData();
   }, []);
+  const fetchMoreListing = async () => {
+    try {
+      //?getting reference
+      const listingsRef = collection(db, "listings");
+      //?getting query
+      const newQuery = query(
+        listingsRef,
+        where("offer", "==", true),
+        orderBy("timeStamp", "desc"),
+        startAfter(lastFetchedListing),
+        limit(5)
+      );
+
+      //Execute query
+      const querySnap = await getDocs(newQuery);
+
+      const lastVisible = querySnap.docs[querySnap.docs.length - 1];
+
+      setLastFetchListing(lastVisible);
+      console.log(lastFetchedListing);
+      let listingArray = [];
+      querySnap.forEach((doc) => {
+        console.log(doc.data());
+        return listingArray.push({
+          id: doc.id, //id is not located in  doc.data() we manually add this
+          ...doc.data(),
+        });
+      });
+
+      setListings((prevState) => [...prevState, ...listingArray]);
+
+      setLoading(false);
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
   return (
     <section className={styles.container}>
       <header>
@@ -65,6 +105,12 @@ const Offers = () => {
         </main>
       ) : (
         <p>There are no current offers</p>
+      )}
+
+      {lastFetchedListing && (
+        <button className={styles["load-button"]} onClick={fetchMoreListing}>
+          Load More
+        </button>
       )}
     </section>
   );

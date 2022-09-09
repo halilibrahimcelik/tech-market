@@ -17,6 +17,7 @@ import Listings from "../../components/listings/Listings";
 const Category = () => {
   const [listings, setListings] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [lastFetchedListing, setLastFetchListing] = useState(null);
 
   const params = useParams();
   useEffect(() => {
@@ -30,12 +31,16 @@ const Category = () => {
           listingsRef,
           where("type", "==", params.categoryName),
           orderBy("timeStamp", "desc"),
-          limit(10)
+          limit(2)
         );
 
         //Execute query
         const querySnap = await getDocs(newQuery);
-        console.log(querySnap);
+
+        const lastVisible = querySnap.docs[querySnap.docs.length - 1];
+
+        setLastFetchListing(lastVisible);
+
         let listingArray = [];
         querySnap.forEach((doc) => {
           console.log(doc.data());
@@ -54,6 +59,45 @@ const Category = () => {
     };
     fetchData();
   }, [params.categoryName]);
+
+  //Pagination
+  const fetchMoreListing = async () => {
+    try {
+      //?getting reference
+      const listingsRef = collection(db, "listings");
+      //?getting query
+      const newQuery = query(
+        listingsRef,
+        where("type", "==", params.categoryName),
+        orderBy("timeStamp", "desc"),
+        startAfter(lastFetchedListing),
+        limit(10)
+      );
+
+      //Execute query
+      const querySnap = await getDocs(newQuery);
+
+      const lastVisible = querySnap.docs[querySnap.docs.length - 1];
+
+      setLastFetchListing(lastVisible);
+
+      let listingArray = [];
+      querySnap.forEach((doc) => {
+        console.log(doc.data());
+        return listingArray.push({
+          id: doc.id, //id is not located in  doc.data() we manually add this
+          ...doc.data(),
+        });
+      });
+
+      setListings((prevState) => [...prevState, ...listingArray]);
+
+      setLoading(false);
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+
   return (
     <section className={styles.container}>
       <header>
@@ -72,6 +116,12 @@ const Category = () => {
         </main>
       ) : (
         <p>No listing for {params.categoryName} </p>
+      )}
+
+      {lastFetchedListing && (
+        <button className={styles["load-button"]} onClick={fetchMoreListing}>
+          Load More
+        </button>
       )}
     </section>
   );
