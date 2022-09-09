@@ -36,19 +36,12 @@ const EditListing = () => {
     longitude: 0,
   });
   const {
-    type,
-    name,
-    ramMemory,
-    brand,
     images,
     address,
     regularPrice,
     discountedPrice,
-    operatingSystem,
     latitude,
     longitude,
-    offer,
-    screenSize,
   } = formData;
 
   const auth = getAuth();

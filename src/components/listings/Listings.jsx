@@ -16,7 +16,6 @@ const Listings = ({ listings, onDelete, onEdit }) => {
       {listings.map((listing) => {
         const {
           id,
-          brand,
           imageUrls,
           name,
           location,
@@ -24,11 +23,8 @@ const Listings = ({ listings, onDelete, onEdit }) => {
           operatingSystem,
           ramMemory,
           regularPrice,
-          screentSize,
-          timeStamp,
           type,
           discountedPrice,
-          geoLocation,
         } = listing;
         return (
           <li key={id} className={styles.product}>

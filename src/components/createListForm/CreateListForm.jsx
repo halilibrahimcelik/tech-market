@@ -10,9 +10,9 @@ const CreateListForm = ({
   const {
     type,
     name,
-    ramMemory,
+
     brand,
-    imageUrls,
+
     address,
     regularPrice,
     discountedPrice,
@@ -20,7 +20,6 @@ const CreateListForm = ({
     latitude,
     longitude,
     offer,
-    screenSize,
   } = formData;
 
   return (
