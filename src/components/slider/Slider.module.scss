@@ -80,3 +80,20 @@ font-weight: 700;
   font-weight: 700;
   
 }
+
+@media (max-width:768px) {
+  .product-name{
+
+    top: 10;
+    bottom:50px;
+    left:50px;
+ 
+    }
+    .product-price{
+  
+      top: 10;
+      left:50px;
+   
+      
+    }
+}
