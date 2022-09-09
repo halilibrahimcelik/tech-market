@@ -84,7 +84,7 @@ const CreateListForm = ({
 
         <div className={styles["device-features"]}>
           <div>
-            <label className={styles["form-label"]}> Ram-Memory </label>
+            <label className={styles["form-label"]}> (SSD)Ram-Memory </label>
             <select required id="ramMemory" onChange={onMutate}>
               <option value="8">8 GB</option>
               <option value="16">16 GB</option>
