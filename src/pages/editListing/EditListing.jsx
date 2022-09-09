@@ -115,7 +115,7 @@ const EditListing = () => {
 
     if (geolocationEnabled) {
       try {
-        const API_KEY = process.env.REACT_APP_GEOCODING_API_KEY_DEP;
+        const API_KEY = process.env.REACT_APP_GEOCODING_API_KEY_PRODD;
         const URL = `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${API_KEY}`;
         const response = await fetch(URL);
         const data = await response.json();
