@@ -33,8 +33,8 @@ const AuthContextProvider = (props) => {
           name: user.displayName,
           email: user.email,
         };
-        console.log("auth state changed!");
-        console.log(auth);
+        // console.log("auth state changed!");
+        // console.log(auth);
         localStorage.setItem("token", JSON.stringify(user.uid));
         localStorage.setItem("userInfo", JSON.stringify(userInfo));
       }

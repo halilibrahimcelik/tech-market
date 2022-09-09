@@ -6,7 +6,6 @@ import { useAuthContext } from "../hook/userAuth";
 const ProtectedRotue = () => {
   const { loggedIn, checkingStatus } = useAuthContext();
 
-  console.log(loggedIn);
   if (checkingStatus) {
     return (
       <>

@@ -1,4 +1,5 @@
 .profile{
+    padding-bottom: 10rem;
     header{
         display: flex;
         margin-top: 3rem;
@@ -39,6 +40,13 @@
     .title{
 display: flex;
 justify-content: space-between;
+box-shadow: 1px 0px 9px 1px rgba(0,0,0,0.5);
+border-radius: 20px;
+padding: 0.4rem;
+p{
+    font-size: 1.2rem;
+    font-weight: 700;
+}
 button{
     background-color: transparent;
     border:none;
@@ -87,7 +95,17 @@ button{
             font-weight: 800;
         }
     }
-}.user-sale{
+}
+.active{
+background-color: rgba(153, 143, 143, 0.3);
+label{
+  background-color:#fff;
+  box-shadow: 1px 0px 9px 1px rgba(0,0,0,0.5);
+  padding: 0.4rem;
+  border-radius: 20px;
+}
+}
+.user-sale{
     display: flex;
     cursor: pointer;
     justify-content: space-between;
@@ -107,6 +125,10 @@ button{
 
 }
 
+.listing-text{
+    font-size: 1.3rem;
+    font-weight: 700;
+}
 .icon{
     font-size: 2rem;
     color: #00CC66;
