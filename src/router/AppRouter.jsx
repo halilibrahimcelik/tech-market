@@ -34,8 +34,10 @@ const AppRouter = () => {
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route
           path="/category/:categoryName/:listingId"
-          element={<ListProduct />}
-        />
+          element={<ProtectedRotue />}
+        >
+          <Route path="" element={<ListProduct />} />
+        </Route>
         <Route path="/contact/:dealerId" element={<ContactDealer />} />
         <Route path="/edit-listing/:listingId" element={<EditListing />} />
         <Route path="*" element={<NotFound />} />
