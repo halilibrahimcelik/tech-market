@@ -13,6 +13,7 @@ import CreateList from "../pages/createList/CreateList";
 import ListProduct from "../pages/listProduct/ListProduct";
 import ContactDealer from "../pages/contactDealer/ContactDealer";
 import EditListing from "../pages/editListing/EditListing";
+import NotFound from "../pages/notFound/NotFound";
 
 const AppRouter = () => {
   return (
@@ -37,6 +38,7 @@ const AppRouter = () => {
         />
         <Route path="/contact/:dealerId" element={<ContactDealer />} />
         <Route path="/edit-listing/:listingId" element={<EditListing />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Navbar />
     </BrowserRouter>
