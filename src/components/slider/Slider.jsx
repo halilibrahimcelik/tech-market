@@ -41,7 +41,7 @@ const Slider = () => {
     };
     fetchListing();
   }, []);
-
+  console.log(listings);
   if (loading) {
     return <Spinner />;
   }
@@ -73,7 +73,7 @@ const Slider = () => {
                     backgroundImage: "url(" + data.imageUrls[0] + ")",
                   }}
                 >
-                  <p className={styles["product-name"]}>{data.name} </p>
+                  {<p className={styles["product-name"]}>{data.name} </p>}
                   <p className={styles["product-price"]}>
                     {data.regularPrice} $
                   </p>

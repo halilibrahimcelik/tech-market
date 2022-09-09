@@ -58,7 +58,9 @@ position: relative;
    }
 
 }
-
+.swiperSlide{
+  position: relative;
+}
 .product-name{
 background-color:rgba(230, 224, 224, 0.4);
 position: fixed;
@@ -83,14 +85,14 @@ font-weight: 700;
 
 @media (max-width:768px) {
   .product-name{
-
+position: absolute;
     top: 10;
     bottom:50px;
     left:50px;
  
     }
     .product-price{
-  
+  position: absolute;
       top: 10;
       left:50px;
    
