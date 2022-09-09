@@ -1,5 +1,6 @@
 @import "../../sass/variables";
 .product{
+    position: relative;
     display: flex;
     margin-bottom: 1rem;
     gap: 3rem;
@@ -69,8 +70,10 @@
 .removeIcon {
     cursor: pointer;
     position: absolute;
-    top: -3%;
-    right: -2%;
+    font-size: 2rem;
+    right: 1%;
+    top:20%
+ 
   }
 
   @media (min-width:768px){

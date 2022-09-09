@@ -9,6 +9,7 @@ import { HiCurrencyDollar } from "react-icons/hi";
 import { BsLaptop, BsPhone } from "react-icons/bs";
 
 const Listings = ({ listings, onDelete }) => {
+  console.log(onDelete);
   return (
     <>
       {listings.map((listing) => {
@@ -76,7 +77,7 @@ const Listings = ({ listings, onDelete }) => {
             {onDelete && (
               <MdDelete
                 className={styles.removeIcon}
-                onClick={() => onDelete(id, name)}
+                onClick={() => onDelete(id)}
               />
             )}
           </li>

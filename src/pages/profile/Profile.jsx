@@ -90,6 +90,16 @@ const Profile = () => {
     setLoggedIn(false);
   };
 
+  const onDeleteHandler = async (listingId) => {
+    if (window.confirm("Are You you want to delete?")) {
+      await deleteDoc(doc(db, "listings", listingId));
+      const updatedListings = listings.filter(
+        (listing) => listing.id !== listingId
+      );
+      setListings(updatedListings);
+      toast.success("Succesfully Deleted!");
+    }
+  };
   if (loading) {
     return <Spinner />;
   }
@@ -158,7 +168,11 @@ const Profile = () => {
       {!loading && listings?.length > 0 && (
         <>
           <p className={styles["listing-text"]}>Your List!</p>
-          <Listings key={listings.id} listings={listings} />
+          <Listings
+            key={listings.id}
+            listings={listings}
+            onDelete={onDeleteHandler}
+          />
         </>
       )}
     </section>
