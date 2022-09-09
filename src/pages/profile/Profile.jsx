@@ -109,7 +109,7 @@ const Profile = () => {
   return (
     <section className={styles.profile}>
       <header>
-        <h2>My profile</h2>
+        <p>My profile</p>
         <button onClick={handleLogout}>Logout</button>
       </header>
       <article className={styles["user-details"]}>

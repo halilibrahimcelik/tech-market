@@ -4,10 +4,17 @@
     bottom:0 ;
     right: 0;
     height: 80px;
-    background-color: white;
-    color:#807d7d;
-    margin-top: 2rem;
 
+    color:#524d4d;
+    margin-top: 2rem;
+    // background-color: #858fa1;
+    // background-image: linear-gradient(-10deg, #9ec4f7 11%, #f3f3f3  100%);
+    background-color: #cec7ce;
+    background-image: linear-gradient(-10deg, #d3bbd3 0%, #97d9e1 100%);
+    
+   
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 .navBar{
     z-index: 1;
@@ -38,6 +45,6 @@
 
 }
 .active{
-    color:black;
+    color:#050303;
     font-weight: 800;
 }

@@ -111,7 +111,7 @@ const ListProduct = () => {
 
         <ul className={styles.productDetail}>
           <li>Screen size (inc) {screentSize} </li>
-          <li>SSD-memory {ramMemory} </li>
+          <li>SSD-memory {ramMemory} GB </li>
           <li>Operating system {operatingSystem} </li>
         </ul>
 

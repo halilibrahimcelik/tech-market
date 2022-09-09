@@ -17,7 +17,7 @@ const Explore = () => {
   return (
     <section className={styles.explore}>
       <header className={styles.header}>
-        <p>Explore</p>
+        <p>Tech-Market</p>
       </header>
       <main>
         <Slider />
