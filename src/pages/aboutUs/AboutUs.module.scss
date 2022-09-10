@@ -58,3 +58,20 @@ gap:2rem;
        align-items: center;
     }
 }
+@media (max-width:600px) {
+ .flex-container{
+    gap:0
+ }
+   
+    .image{
+      width:200px;
+      margin-bottom: 2rem;
+    }
+    .developer-info{
+        text-align: right;
+       position: relative;
+       padding-bottom:5rem;
+   
+    }
+    
+}
