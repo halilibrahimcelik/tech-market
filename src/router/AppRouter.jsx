@@ -14,6 +14,7 @@ import ListProduct from "../pages/listProduct/ListProduct";
 import ContactDealer from "../pages/contactDealer/ContactDealer";
 import EditListing from "../pages/editListing/EditListing";
 import NotFound from "../pages/notFound/NotFound";
+import AboutUs from "../pages/aboutUs/AboutUs";
 
 const AppRouter = () => {
   return (
@@ -40,6 +41,7 @@ const AppRouter = () => {
         </Route>
         <Route path="/contact/:dealerId" element={<ContactDealer />} />
         <Route path="/edit-listing/:listingId" element={<EditListing />} />
+        <Route path="/about-us" element={<AboutUs />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Navbar />
