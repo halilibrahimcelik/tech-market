@@ -82,7 +82,6 @@ const Category = () => {
 
       let listingArray = [];
       querySnap.forEach((doc) => {
-        console.log(doc.data());
         return listingArray.push({
           id: doc.id, //id is not located in  doc.data() we manually add this
           ...doc.data(),

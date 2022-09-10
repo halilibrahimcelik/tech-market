@@ -1,7 +1,11 @@
 import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import styles from "./Navbar.module.scss";
-import { AiOutlineCompass, AiOutlineTags } from "react-icons/ai";
+import {
+  AiOutlineCompass,
+  AiOutlineTags,
+  AiOutlineInfoCircle,
+} from "react-icons/ai";
 import { CgProfile } from "react-icons/cg";
 
 const Navbar = () => {
@@ -37,6 +41,13 @@ const Navbar = () => {
               onClick={() => navigate("profile")}
             />
             <p>Profile</p>
+          </li>
+          <li className={pathMatchRoute("/about-us") ? styles.active : null}>
+            <AiOutlineInfoCircle
+              className={styles.icon}
+              onClick={() => navigate("about-us")}
+            />
+            <p>About us</p>
           </li>
         </ul>
       </nav>

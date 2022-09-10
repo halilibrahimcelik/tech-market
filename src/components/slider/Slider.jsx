@@ -41,7 +41,7 @@ const Slider = () => {
     };
     fetchListing();
   }, []);
-  console.log(listings);
+
   if (loading) {
     return <Spinner />;
   }

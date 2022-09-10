@@ -28,7 +28,7 @@ const ListProduct = () => {
     operatingSystem,
     ramMemory,
     regularPrice,
-    screentSize,
+    screenSize,
 
     discountedPrice,
     geolaction,
@@ -110,7 +110,7 @@ const ListProduct = () => {
         </div>
 
         <ul className={styles.productDetail}>
-          <li>Screen size (inc) {screentSize} </li>
+          <li>Screen size: {screenSize} (inc)</li>
           <li>SSD-memory {ramMemory} GB </li>
           <li>Operating system {operatingSystem} </li>
         </ul>
