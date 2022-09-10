@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./AboutUs.module.scss";
 import image from "../../assets/e-commerce-image.png";
+import { FaAngleUp, FaGithub, FaLinkedin, FaMailBulk } from "react-icons/fa";
 const AboutUs = () => {
   return (
     <section className={styles.container}>
@@ -22,12 +23,33 @@ const AboutUs = () => {
       </main>
 
       <div className={styles["developer-info"]}>
-        <span>
+        <p>
           This application was designed by <strong>Halil Ibrahim Celik</strong>{" "}
-        </span>
-        <span>
+        </p>
+        <p>
           for further queries and question, feel free to contact the developer!
-        </span>
+        </p>
+        <div className={styles.icons}>
+          <a
+            href="https://github.com/halilibrahimcelik"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaGithub className={styles.icon} />
+          </a>
+
+          <a
+            href="https://www.linkedin.com/in/halil-ibrahim-celik/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaLinkedin className={styles.icon} />
+          </a>
+          <a href="mailto:hibrahim.celik@yahoo.com">
+            {" "}
+            <FaMailBulk className={styles.icon} />
+          </a>
+        </div>
       </div>
     </section>
   );
