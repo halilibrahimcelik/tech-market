@@ -29,4 +29,5 @@ Techniques I have used in this project;
 
 =>Swiper.js which I have used for creating touch sliders for products
 
+=>React.icons for displaying icons for the application
 
