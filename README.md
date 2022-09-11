@@ -1,6 +1,9 @@
 # Welcome to Tech-Market
 
  [Website Link](https://tech-market.vercel.app/).
+ 
+ ![tech-market-gif](https://user-images.githubusercontent.com/92088301/189520757-6b6bb749-280c-461d-8f30-ac7f609881ab.gif)
+
 
 
 This  project aims to display demo e-commerce website. 
