@@ -20,6 +20,8 @@ Techniques I have used in this project;
 
 --I have used custom react hooks to easily control the state management.
 
+--Created a SPA by benefitting  "react-router-dom".
+
 --Firestore store management constitute  the backend of the application.All data gathered by end-users stored in the firestore. 
 
 --For styling, I adopted SCSS/SASS module. Each and every one of component and page has its own styling page.
