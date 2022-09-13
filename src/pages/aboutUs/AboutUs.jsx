@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./AboutUs.module.scss";
 import image from "../../assets/e-commerce-image.png";
-import { FaAngleUp, FaGithub, FaLinkedin, FaMailBulk } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaMailBulk } from "react-icons/fa";
 const AboutUs = () => {
   return (
     <section className={styles.container}>
@@ -15,7 +15,7 @@ const AboutUs = () => {
             devices and laptops.
           </p>
           <p>
-            In order to contact with other vendors,first You need to register in
+            So as to contact with other vendors,first You need to register in
             our platform.{" "}
           </p>
         </article>
@@ -27,7 +27,7 @@ const AboutUs = () => {
           This application was designed by <strong>Halil Ibrahim Celik</strong>{" "}
         </p>
         <p>
-          for further queries and question, feel free to contact the developer!
+          for further queries and questions, feel free to contact the developer!
         </p>
         <div className={styles.icons}>
           <a
