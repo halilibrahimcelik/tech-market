@@ -1,6 +1,9 @@
 # Welcome to Tech-Market
 
  [Website Link](https://tech-market.vercel.app/).
+ 
+ ![tech-market-gif](https://user-images.githubusercontent.com/92088301/189520757-6b6bb749-280c-461d-8f30-ac7f609881ab.gif)
+
 
 
 This  project aims to display demo e-commerce website. 
@@ -17,6 +20,8 @@ Techniques I have used in this project;
 
 --I have used custom react hooks to easily control the state management.
 
+--Created a SPA by benefitting  "react-router-dom".
+
 --Firestore store management constitute  the backend of the application.All data gathered by end-users stored in the firestore. 
 
 --For styling, I adopted SCSS/SASS module. Each and every one of component and page has its own styling page.
@@ -29,4 +34,5 @@ Techniques I have used in this project;
 
 =>Swiper.js which I have used for creating touch sliders for products
 
+=>React.icons for displaying icons for the application
 
